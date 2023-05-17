@@ -7,14 +7,11 @@ const router = require('./routes')
 const middleware = require('./helpers/middlewares')
 
 app.use(express.json());
-app.use(router);
 app.use(middleware.authenticationMiddleware);
+app.use(router);
 
 // error handlers:
-app.use((err, req, res, next) => {
-  console.log(err)
-  res.json({ "message": err.message, "stack": err.stack })
-});
+app.use(middleware.errorHandlersMiddleware);
 
 
 const mongoose = require('mongoose');

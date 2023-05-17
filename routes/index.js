@@ -1,10 +1,12 @@
 module.exports = [
-  require('./auth')
+  require('./auth'),
+  require('./tasks')
 ];
 
 
 
 // const router = [
-//   require('./auth')
+//   require('./auth'),
+//   require('./tasks')
 // ];
 // module.exports = router;
