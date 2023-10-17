@@ -16,7 +16,7 @@ async function authenticationMiddleware(req, res, next) {
     next();
   }
   catch(err) {
-    console.log('erro during authentication')
+    console.log('error during authentication')
     next(err)
   }
 

@@ -6,10 +6,12 @@ const bcrypt = require('bcrypt');
 
 class authControllers {
   static async registerUser(document) {
+    // Check if a user with the same email or full name already exists
     const existingUser = await Users.findOne({ $or: [{ email: document.email }, { username: document.username }] }).lean()
     if (existingUser) {
       throw new Error("User Already Exist!!")
     }
+    // Generate a salt and hash the user's password with bcrypt
     const salt = bcrypt.genSaltSync(10)
     const hash = bcrypt.hashSync(document.password, salt)
     document.password = hash
